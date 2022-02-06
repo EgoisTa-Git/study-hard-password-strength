@@ -2,39 +2,27 @@ import urwid
 
 
 def is_very_long(password):
-    if len(password) > 12:
-        return 2
-    return 0
+    return len(password) > 12
 
 
 def has_digit(password):
-    if any(char.isdigit() for char in password):
-        return 2
-    return 0
+    return any(char.isdigit() for char in password)
 
 
 def has_letters(password):
-    if any(char.isalpha() for char in password):
-        return 2
-    return 0
+    return any(char.isalpha() for char in password)
 
 
 def has_upper_letters(password):
-    if any(char.isupper() for char in password):
-        return 2
-    return 0
+    return any(char.isupper() for char in password)
 
 
 def has_lower_letters(password):
-    if any(char.islower() for char in password):
-        return 2
-    return 0
+    return any(char.islower() for char in password)
 
 
 def has_symbols(password):
-    if any(not char.isdigit() and not char.isalpha() for char in password):
-        return 2
-    return 0
+    return any(not char.isdigit() and not char.isalpha() for char in password)
 
 
 def pass_strength(edit, password, field):
@@ -48,7 +36,7 @@ def pass_strength(edit, password, field):
     )
     score = 0
     for check in checks:
-        score += check(password)
+        score += 2 * check(password)
     field.set_text(f'Рейтинг пароля: {score}')
 
 
